@@ -1,27 +1,28 @@
-def to_reverse(str):
+#Проект проверка номера карты
+def to_reverse(str): #реверс номера
     str = str[::-1]
     return str
-def even_num(str):
+def even_num(str): #сумма удвоенных цифр на четных местах
     sum_even=0
     for i in range(1, len(str), 2):
-        mi=2*int(str[i])
-        if mi>9:
+        mi=2*int(str[i]) 
+        if mi>9: #если произведение  больше 9, оно заменяется суммой цифр получившегося произведения
             spl_num=int(mi/10)+(mi-10*int(mi/10))
             sum_even=sum_even+spl_num
         elif mi<=9:
             sum_even=sum_even+mi
     return sum_even
-def odd_num(str):
+def odd_num(str): #сумма цифр на нечетных местах
     sum_odd=0
     for i in range(0, len(str), 2):
         sum_odd=sum_odd+int(str[i])
     return sum_odd
-def check_valid(final_s):
+def check_valid(final_s): #финальная проверка валидности номера, если итоговая сумма кратна 10, то номер является правильным, иначе- неверным.
     if int(final_s)%10==0:
         print("Номер карты является верным.")
     else:
         print("Номер карты является неверным.")
-def main():
+def main(): #основная функция
     str=input()
     if len(str)>=13 and len(str)<=16:
         if str[0]=='4':
@@ -40,6 +41,6 @@ def main():
     str=to_reverse(str)
     even_num((str))
     odd_num((str))
-    final_s=even_num(str)+odd_num((str))
+    final_s=even_num(str)+odd_num((str)) #сумма цифр на четных и нечетных позициях с условиями
     check_valid(final_s)
-main()
+main() #вызов основной функции
